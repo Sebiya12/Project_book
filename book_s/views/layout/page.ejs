@@ -11,15 +11,14 @@
             <nav class="navbar navbar-expand-sm bg-light navbar-light">
                 <div class="container-fluid">
                   <ul class="navbar-nav">
-                    <% menu.forEach(function(book){ %>
+                    <% if(typeof nav == 'object' && nav){ nav.forEach(function(book){
+                      %>
                       <li class="nav-item">
                       <a class="nav-link"
                       href="/books/<%=book.nick%>"><%=book.title%></a>
                       </li>
-                      <% }) %>
-                      
+                      <% })} %>
                   </ul>
-
                 <ul class="navbar-nav navbar-right">
                     <li>
                         <a class="nav-link" href="">Войти</a>

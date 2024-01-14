@@ -32,7 +32,6 @@ router.get("/:nick", async (req, res, next) => {
       title: title,
       picture: picture,
       desc: desc,
-      menu:books
     });
   }
 module.exports = router;

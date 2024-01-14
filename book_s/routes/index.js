@@ -4,17 +4,12 @@ const List = require("../models/book").List;
 /* GET home page. */
 router.get('/', async (req, res, next) => {
   try {
-    const menu = await List.find({}, { _id: 0, title: 1, nick: 1 });
+   
     req.session.greeting = "Hi!!!"
-    res.render('index', { 
-      title:'Express', 
-      menu:menu,
-      counter:req.session.counter
-    });
-
+    res.render('index', { title: 'Express', counter:req.session.counter });
   } catch (err) {
     next(err);
   }
 });
-     
+
 module.exports = router;
