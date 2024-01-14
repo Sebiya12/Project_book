@@ -42,4 +42,9 @@ router.get('/logreg', async function(req, res, next) {
     }
 });
   
+router.post('/logout', function(req, res, next) {
+  req.session.destroy()
+  res.locals.user = null
+  res.redirect('/')
+});
 module.exports = router;
