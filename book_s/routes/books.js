@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../mySQLConnect.js');
-
+var checkAuth = require("./../middleware/checkAuth.js")
 //const List = require("../models/book").List;
 //var checkAuth = require("./../middleware/checkAuth.js")
 
@@ -38,7 +38,7 @@ res.send('Новый маршрутизатор, для книг');
 //     });
 //   }
 
-  router.get("/:nick", function(req, res, next) {
+  router.get("/:nick",checkAuth, function(req, res, next) {
     db.query(`SELECT * FROM lists WHERE lists.nick = '${req.params.nick}'`, (err, lists) => {
     if(err) {
       console.log(err);
