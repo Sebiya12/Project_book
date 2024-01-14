@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const List = require("../models/book").List;
+var checkAuth = require("./../middleware/checkAuth.js")
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -9,7 +10,7 @@ res.send('Новый маршрутизатор, для книг');
 
 
 
-router.get("/:nick", async (req, res, next) => {
+router.get("/:nick",checkAuth, async (req, res, next) => {
       try {
         const [book, books] = await Promise.all([
           List.findOne({ nick: req.params.nick }),
